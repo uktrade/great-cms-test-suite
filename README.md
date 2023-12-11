@@ -49,6 +49,7 @@ that is not added to version control. To create a template secrets file with dum
 | make secrets                  | Create your secret env var file |
 | make all_tests                | Run all tests |
 | make confidence_tests         | Run tests labelled as confidence tests |
+| make integration_tests        | Run integration tests |
 | make load_tests               | Run load tests |
 | make security_tests           | Run security tests |
 | make ui_tests                 | Run UI tests |
