@@ -1,0 +1,60 @@
+version: 2.1
+
+###############################################################################
+# Variables
+###############################################################################
+
+python: &python
+  image: cimg/python:3.9.13
+
+###############################################################################
+# Steps
+###############################################################################
+
+setup_secrets: &setup_secrets
+  run:
+    name: Setup Secrets
+    command: |
+      . venv/bin/activate
+      make secrets
+
+
+###############################################################################
+# Jobs
+###############################################################################
+
+jobs:
+  flake8:
+    docker:
+      - <<: *python
+    steps:
+      - checkout
+      - *install_libcairo2
+      - run:
+          name: Run flake8
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install --quiet -r requirements_test.txt
+            flake8
+
+  black:
+    docker:
+      - <<: *python
+    steps:
+      - checkout
+      - run:
+          name: Run Black in check mode
+          command: |
+            python3 -m venv .venv
+            . .venv/bin/activate
+            pip install black
+            black ./ --check
+
+workflows:
+  version: 2
+  test_and_checks:
+    jobs:
+      - flake8
+      - black
