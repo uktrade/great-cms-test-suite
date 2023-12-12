@@ -1,11 +1,5 @@
 # Great CMS Tests
 
-[![circle-ci-image]][circle-ci]
-[![codecov-image]][codecov]
-[![docs-image]][docs]
-[![gitflow-image]][gitflow]
-[![semver-image]][semver]
-
 **Test suite for the GREAT platform - The Department for Business and Trade (DBT)**
 
 ---
@@ -56,10 +50,11 @@ that is not added to version control. To create a template secrets file with dum
 
 
 ### Folder structure
-`integration` - contain integration tests
-`load` - contain load tests
-`security` - contain security tests
-`ui` - contain ui tests
+* `integration` - contains integration tests
+* `load` - contains load tests
+* `security` - contains security tests
+* `ui` - contains ui tests
+
 
 *Note it is envisaged that confidence tests are derived from marked tests in the above categories*
 ___
