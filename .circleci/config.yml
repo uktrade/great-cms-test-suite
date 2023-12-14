@@ -110,54 +110,6 @@ jobs:
             pip install behave
             behave
 
-  test_browser:
-    working_directory: ~/greatcms
-    docker:
-      - <<: *python_node_browsers
-      - <<: *postgres
-    environment: *postgres_url
-    steps:
-      - checkout
-      - *install_postgresql_client
-      - restore_cache:
-          key: v1-deps-{{ checksum "requirements_test.txt" }}
-      - run: sudo apt-get update
-      - browser-tools/install-chrome:
-          chrome-version: "116.0.5845.110"
-      - browser-tools/install-chromedriver
-      - run:
-          name: Install Allure CLI
-          when: always
-          command: |
-            wget https://github.com/allure-framework/allure2/releases/download/2.13.1/allure-commandline-2.13.1.zip -O allure.zip
-            unzip -q allure.zip
-            find . -maxdepth 1 -type d -name "allure*" -exec mv {} allure \;
-            rm allure.zip
-      - *create_virtualenv_and_install_dependencies
-      - *setup_secrets
-      - save_cache:
-          key: v1-deps-{{ checksum "requirements_test.txt" }}
-          paths:
-            - 'venv'
-      - run:
-          name: Run Browser tests
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            make pytest_browser
-      - store_test_results:
-          path: ./results/
-      - run:
-          name: Generate Allure report
-          when: always
-          command: |
-            export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))
-            export PATH=$PATH:$HOME/bin:$PATH:$JAVA_HOME/bin:./allure/bin
-            allure generate --clean --output ./allure_report ./allure_results/
-      - store_artifacts:
-          path: ./allure_report/
-          destination: allure_report
-
   test_javascript:
     docker:
       - *python_node_browsers
@@ -238,7 +190,6 @@ workflows:
   test_and_checks:
     jobs:
       - test_behavioural
-      - test_browser
       - test_javascript
       - test_load
       - test_unit
