@@ -7,6 +7,9 @@ version: 2.1
 python: &python
   image: cimg/python:3.9.13
 
+python_node_browsers: &python_node_browsers
+  image: cimg/python:3.9.13-browsers
+
 ###############################################################################
 # Steps
 ###############################################################################
@@ -17,6 +20,13 @@ setup_secrets: &setup_secrets
     command: |
       . venv/bin/activate
       make secrets
+
+install_libcairo2: &install_libcairo2
+  run:
+    name: Install libcairo2-dev
+    command: |
+      sudo apt-get update
+      sudo apt-get install libcairo2-dev
 
 
 ###############################################################################
@@ -52,9 +62,64 @@ jobs:
             pip install black
             black ./ --check
 
+  test_behavioural:
+    docker:
+      - <<: *python
+    steps:
+      - checkout
+      - run:
+          name: Run behave
+          command: |
+            python3 -m venv .venv
+            . .venv/bin/activate
+            pip install behave
+            behave
+
+  test_browser:
+    docker:
+      - <<: *python
+    steps:
+      - checkout
+
+  test_javascript:
+    docker:
+      - *python_node_browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install node modules
+          command: npm ci
+      - save_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+          paths:
+            - 'node_modules'
+      - run:
+          name: Run Javascript tests
+          command: npm test -- --maxWorkers=1
+
+  test_load:
+    docker:
+      - <<: *python
+    steps:
+      - checkout
+
+  test_unit:
+    docker:
+      - <<: *python
+    steps:
+      - checkout
+
+
 workflows:
   version: 2
   test_and_checks:
     jobs:
+      - test_behavioural
+      - test_browser
+      - test_javascript
+      - test_load
+      - test_unit
       - flake8
       - black
