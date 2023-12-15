@@ -39,14 +39,6 @@ secrets:
 		else echo "config/env/secrets-do-not-commit already exists. Delete first to recreate it."; \
 	fi
 
-all_tests:
-    make behavioural_tests;
-	make confidence_tests;
-	make integration_tests;
-	make load_tests;
-	make security_tests;
-	make ui_tests;
-
 behavioural_tests:
 	behave ./tests/behavioural/features/
 
@@ -64,3 +56,11 @@ security_tests:
 
 ui_tests:
 	echo "Running UI tests."
+
+all_tests:
+	make behavioural_tests;
+	make confidence_tests;
+	make integration_tests;
+	make load_tests;
+	make security_tests;
+	make ui_tests;
