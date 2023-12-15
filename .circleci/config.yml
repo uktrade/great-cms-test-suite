@@ -129,32 +129,13 @@ jobs:
           command: npm test -- --maxWorkers=1
 
   test_load:
-    working_directory: ~/greatcms
     docker:
       - <<: *python
-      - <<: *postgres
-    environment:
-      NUM_USERS: 20
-      HATCH_RATE: 3
-      RUN_TIME: 30s
-      <<: *postgres_url
     steps:
-      - checkout
-      - *install_postgresql_client
-      - *install_libcairo2
-      - *create_virtualenv_and_install_dependencies
-      - *setup_secrets
-      - *setup_db
       - run:
           name: Run tests
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            mkdir results
-            make load_tests
-      - store_artifacts:
-          path: ./results/
-          destination: locust_results
+            "echo \"Error: load tests not configured \" && exit 1"
 
   test_unit:
     working_directory: ~/greatcms
