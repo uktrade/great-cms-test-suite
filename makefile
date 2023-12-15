@@ -49,10 +49,10 @@ integration_tests:
 	echo "Running integration tests."
 
 load_tests:
-    echo "Error: load tests not configured" && exit 1
+	echo "Error: load tests not configured" && exit 1
 
 security_tests:
-	echo "Running load tests."
+	echo "Running security tests."
 
 ui_tests:
 	echo "Running UI tests."
