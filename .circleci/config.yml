@@ -133,7 +133,7 @@ jobs:
       - <<: *python
     steps:
       - run:
-          name: Run tests
+          name: Run load tests
           command: |
             make load_tests
 
@@ -142,7 +142,7 @@ jobs:
       - <<: *python
     steps:
       - run:
-          name: Run tests
+          name: Run unit tests
           command: |
             make unit_tests
 
