@@ -151,7 +151,7 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             mkdir results
-            make test_load
+            make load_tests
       - store_artifacts:
           path: ./results/
           destination: locust_results
