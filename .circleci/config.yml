@@ -7,9 +7,22 @@ version: 2.1
 python: &python
   image: cimg/python:3.9.13
 
+python_node_browsers: &python_node_browsers
+  image: cimg/python:3.9.13-browsers
+
 ###############################################################################
 # Steps
 ###############################################################################
+
+create_virtualenv_and_install_dependencies:
+  &create_virtualenv_and_install_dependencies
+  run:
+    name: Create virtualenv and install dependencies
+    command: |
+      python3 -m venv venv
+      . venv/bin/activate
+      pip install --upgrade pip
+      make install_requirements
 
 setup_secrets: &setup_secrets
   run:
@@ -18,6 +31,12 @@ setup_secrets: &setup_secrets
       . venv/bin/activate
       make secrets
 
+install_libcairo2: &install_libcairo2
+  run:
+    name: Install libcairo2-dev
+    command: |
+      sudo apt-get update
+      sudo apt-get install libcairo2-dev
 
 ###############################################################################
 # Jobs
@@ -36,7 +55,7 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install --upgrade pip
-            pip install --quiet -r requirements_test.txt
+            pip install --quiet -r requirements_dev.txt
             flake8
 
   black:
@@ -52,9 +71,28 @@ jobs:
             pip install black
             black ./ --check
 
+  test_behavioural:
+    docker:
+      - <<: *python
+    steps:
+      - checkout
+      - run:
+          name: Run behave
+          command: |
+            python3 -m venv .venv
+            . .venv/bin/activate
+            pip install behave
+            make behavioural_tests
+
+
+###############################################################################
+# Workflows
+###############################################################################
+
 workflows:
   version: 2
   test_and_checks:
     jobs:
+      - test_behavioural
       - flake8
       - black

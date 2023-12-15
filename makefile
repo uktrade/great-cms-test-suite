@@ -39,24 +39,32 @@ secrets:
 		else echo "config/env/secrets-do-not-commit already exists. Delete first to recreate it."; \
 	fi
 
+behavioural_tests:
+	behave ./tests/behavioural/features/
+
+confidence_tests:
+	echo "Error: confidence tests not configured" && exit 1
+
+integration_tests:
+	echo "Error: integration tests not configured" && exit 1
+
+load_tests:
+	echo "Error: load tests not configured" && exit 1
+
+security_tests:
+	echo "Error: security tests not configured" && exit 1
+
+ui_tests:
+	echo "Error: ui tests not configured" && exit 1
+
+unit_tests:
+	echo "Error: unit tests not configured" && exit 1
+
 all_tests:
+	make behavioural_tests;
 	make confidence_tests;
 	make integration_tests;
 	make load_tests;
 	make security_tests;
 	make ui_tests;
-
-confidence_tests:
-	echo "Running confidence tests."
-
-integration_tests:
-	echo "Running integration tests."
-
-load_tests:
-	echo "Running load tests."
-
-security_tests:
-	echo "Running load tests."
-
-ui_tests:
-	echo "Running UI tests."
+	make unit_tests;
