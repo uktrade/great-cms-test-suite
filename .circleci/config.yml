@@ -138,29 +138,13 @@ jobs:
             make load_tests
 
   test_unit:
-    working_directory: ~/greatcms
     docker:
-      - <<: *python_node_browsers
-      - <<: *postgres
-    environment: *postgres_url
+      - <<: *python
     steps:
-      - checkout
-      - *install_postgresql_client
-      - restore_cache:
-          key: v1-deps-{{ checksum "requirements_dev.txt" }}
-      - *create_virtualenv_and_install_dependencies
-      - *setup_secrets
-      - save_cache:
-          key: v1-deps-{{ checksum "requirements_dev.txt" }}
-          paths:
-            - 'venv'
       - run:
-          name: Run Unit tests
+          name: Run tests
           command: |
-            . venv/bin/activate
-            make pytest_codecov -- --codecov-token=${CODECOV_TOKEN}
-      - store_test_results:
-          path: ./results/
+            make unit_tests
 
 ###############################################################################
 # Workflows

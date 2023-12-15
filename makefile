@@ -43,24 +43,24 @@ behavioural_tests:
 	behave ./tests/behavioural/features/
 
 confidence_tests:
-	echo "Running confidence tests."
+	echo "Error: confidence tests not configured" && exit 1
 
 integration_tests:
-	echo "Running integration tests."
+	echo "Error: integration tests not configured" && exit 1
 
 load_tests:
 	echo "Error: load tests not configured" && exit 1
 
-security_tests:
-	echo "Running security tests."
-
 ui_tests:
-	echo "Running UI tests."
+	echo "Error: ui tests not configured" && exit 1
+
+unit_tests:
+	echo "Error: unit tests not configured" && exit 1
 
 all_tests:
 	make behavioural_tests;
 	make confidence_tests;
 	make integration_tests;
 	make load_tests;
-	make security_tests;
 	make ui_tests;
+	make unit_tests;
