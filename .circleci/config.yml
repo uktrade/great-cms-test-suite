@@ -4,30 +4,11 @@ version: 2.1
 # Variables
 ###############################################################################
 
-postgres: &postgres
-  - image: cimg/postgres:12.8
-    environment:
-      POSTGRES_USER: debug
-      POSTGRES_PASSWORD: debug
-      POSTGRES_DB: greatcms
-
-postgres_url: &postgres_url
-  DATABASE_URL: postgresql://debug:debug@localhost/greatcms
-
 python: &python
   image: cimg/python:3.9.13
 
 python_node_browsers: &python_node_browsers
   image: cimg/python:3.9.13-browsers
-
-setup_db: &setup_db
-  run:
-    name: Database Setup
-    command: |
-      . venv/bin/activate
-      make database
-      make ARGUMENTS=migrate manage
-      make ARGUMENTS=bootstrap_great manage
 
 ###############################################################################
 # Steps
@@ -56,13 +37,6 @@ install_libcairo2: &install_libcairo2
     command: |
       sudo apt-get update
       sudo apt-get install libcairo2-dev
-
-install_postgresql_client: &install_postgresql_client
-  run:
-    name: Install PostgreSQL Client
-    command: |
-      sudo apt-get update
-      sudo apt-get install postgresql-client
 
 ###############################################################################
 # Jobs
