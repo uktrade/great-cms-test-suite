@@ -51,6 +51,9 @@ integration_tests:
 load_tests:
 	echo "Error: load tests not configured" && exit 1
 
+security_tests:
+	echo "Error: security tests not configured" && exit 1
+
 ui_tests:
 	echo "Error: ui tests not configured" && exit 1
 
@@ -62,5 +65,6 @@ all_tests:
 	make confidence_tests;
 	make integration_tests;
 	make load_tests;
+	make security_tests;
 	make ui_tests;
 	make unit_tests;
