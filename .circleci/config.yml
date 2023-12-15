@@ -81,7 +81,7 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install --upgrade pip
-            pip install --quiet -r requirements_test.txt
+            pip install --quiet -r requirements_dev.txt
             flake8
 
   black:
@@ -166,11 +166,11 @@ jobs:
       - checkout
       - *install_postgresql_client
       - restore_cache:
-          key: v1-deps-{{ checksum "requirements_test.txt" }}
+          key: v1-deps-{{ checksum "requirements_dev.txt" }}
       - *create_virtualenv_and_install_dependencies
       - *setup_secrets
       - save_cache:
-          key: v1-deps-{{ checksum "requirements_test.txt" }}
+          key: v1-deps-{{ checksum "requirements_dev.txt" }}
           paths:
             - 'venv'
       - run:
