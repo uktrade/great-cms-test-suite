@@ -135,7 +135,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            "echo \"Error: load tests not configured \" && exit 1"
+            make load_tests
 
   test_unit:
     working_directory: ~/greatcms

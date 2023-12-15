@@ -16,10 +16,6 @@ checks:
 	black $(PWD) --check --verbose
 	flake8 .
 
-database:
-	PGPASSWORD=debug dropdb --if-exists -h localhost -U debug greatcms
-	PGPASSWORD=debug createdb -h localhost -U debug greatcms
-
 flake8:
 	flake8 . \
 	--exclude=ENV,ENV2,.venv,venv,node_modules,migrations \
@@ -53,10 +49,7 @@ integration_tests:
 	echo "Running integration tests."
 
 load_tests:
-	ENV_FILES='test,dev' python manage.py runserver_plus 0.0.0.0:8020 --keep-meta-shutdown &
-	sleep 5
-	$(LOCUST)
-	-$(kill_webserver)
+    echo "Error: load tests not configured" && exit 1
 
 security_tests:
 	echo "Running load tests."
