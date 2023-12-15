@@ -1,0 +1,22 @@
+{
+  "name": "great-cms-test-suite",
+  "version": "1.0.0",
+  "description": "The Grest CMS Test Suite",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uktrade/great-cms-test-suite.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uktrade/great-cms-test-suite/issues"
+  },
+  "homepage": "https://github.com/uktrade/great-cms-test-suite#readme"
+}

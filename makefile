@@ -40,11 +40,15 @@ secrets:
 	fi
 
 all_tests:
+    make behavioural_tests;
 	make confidence_tests;
 	make integration_tests;
 	make load_tests;
 	make security_tests;
 	make ui_tests;
+
+behavioural_tests:
+	behave ./tests/behavioural/features/
 
 confidence_tests:
 	echo "Running confidence tests."
