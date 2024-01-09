@@ -8,7 +8,7 @@ class BasePage:
     The base page class for all pages under the POM (Page Object Model) Behave structure. All page classes should
     inherit from BasePage. All common functionality should be added here (e.g. accept cookies).
 
-    POM (Page Object Model) reference: https://medium.com/beyn-technology/implementation-of-selenium-and-behave-with-page-object-modeling-in-python-b2920de6fa06
+    POM (Page Object Model) reference: https://www.martinfowler.com/bliki/PageObject.html
     """
 
     def __init__(self, context, path):
@@ -24,7 +24,8 @@ class BasePage:
         """
 
         link = self.context.browser.find_element(By.LINK_TEXT, "Accept all cookies")
-        link.click()
+        if link:
+            link.click()
 
     def get_url(self):
         """
