@@ -1,5 +1,3 @@
-from selenium.webdriver.common.by import By
-
 from tests.behavioural.page_object.pages.base import BasePage
 
 
@@ -9,5 +7,5 @@ class GuidanceAndSupportPage(BasePage):
     """
 
     def __init__(self, context):
-        self.path = "support/guidance-and-support/"
+        self.path = 'support/guidance-and-support/'
         super().__init__(context, self.path)

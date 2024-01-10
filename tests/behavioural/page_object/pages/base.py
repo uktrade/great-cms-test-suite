@@ -23,7 +23,7 @@ class BasePage:
         :return: None
         """
 
-        link = self.context.browser.find_element(By.LINK_TEXT, "Accept all cookies")
+        link = self.context.browser.find_element(By.LINK_TEXT, 'Accept all cookies')
         if link:
             link.click()
 

@@ -7,5 +7,5 @@ class HomePage(BasePage):
     """
 
     def __init__(self, context):
-        self.path = ""
+        self.path = ''
         super().__init__(context, self.path)
