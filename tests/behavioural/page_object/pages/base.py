@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
 
 from config.settings import ROOT
 
@@ -23,9 +24,11 @@ class BasePage:
         :return: None
         """
 
-        link = self.context.browser.find_element(By.LINK_TEXT, 'Accept all cookies')
-        if link:
+        try:
+            link = self.context.browser.find_element(By.LINK_TEXT, 'Accept all cookies')
             link.click()
+        except NoSuchElementException:  # Cookie popup already accepted
+            pass
 
     def get_url(self):
         """
