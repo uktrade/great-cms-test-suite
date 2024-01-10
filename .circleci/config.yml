@@ -39,10 +39,29 @@ install_libcairo2: &install_libcairo2
       sudo apt-get install libcairo2-dev
 
 ###############################################################################
+# Orbs
+###############################################################################
+
+orbs:
+  browser-tools: circleci/browser-tools@1.1
+
+
+###############################################################################
 # Jobs
 ###############################################################################
 
 jobs:
+  build:
+    docker:
+      - image: cimg/python:3.7-browsers
+    steps:
+      - browser-tools/install-browser-tools
+      - checkout
+      - run: |
+          python --version
+          node --version
+          java --version
+          google-chrome --version
   flake8:
     docker:
       - <<: *python
