@@ -16,7 +16,7 @@ def step_visit_homepage(context):
 @when('I click on the "Guidance and Support" link in footer')
 def step_click_link(context):
     homepage = HomePage(context)
-    link = homepage.get_link('Guidance and support')
+    link = homepage.get_link('gain access to a trusted network')
     link.click()
 
 
