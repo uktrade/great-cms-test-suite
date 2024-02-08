@@ -4,28 +4,18 @@
 #
 #    pip-compile requirements_dev.in
 #
-attrs==23.2.0
-    # via
-    #   outcome
-    #   trio
-black==23.11.0
+black==24.1.1
     # via
     #   -r requirements_dev.in
     #   blacken-docs
 blacken-docs==1.6.0
     # via -r requirements_dev.in
-certifi==2023.11.17
-    # via selenium
 cfgv==3.4.0
     # via pre-commit
 click==8.1.7
     # via black
-distlib==0.3.7
+distlib==0.3.8
     # via virtualenv
-exceptiongroup==1.2.0
-    # via
-    #   trio
-    #   trio-websocket
 filelock==3.13.1
     # via virtualenv
 flake8==6.1.0
@@ -45,12 +35,8 @@ flake8-quotes==3.3.2
     # via -r requirements_dev.in
 flake8-string-format==0.3.0
     # via -r requirements_dev.in
-h11==0.14.0
-    # via wsproto
 identify==2.5.33
     # via pre-commit
-idna==3.6
-    # via trio
 isort==5.12.0
     # via -r requirements_dev.in
 mccabe==0.7.0
@@ -59,17 +45,15 @@ mypy-extensions==1.0.0
     # via black
 nodeenv==1.8.0
     # via pre-commit
-outcome==1.3.0.post0
-    # via trio
 packaging==23.2
     # via black
-pathspec==0.11.2
+pathspec==0.12.1
     # via black
-platformdirs==4.1.0
+platformdirs==4.2.0
     # via
     #   black
     #   virtualenv
-pre-commit==3.5.0
+pre-commit==3.6.0
     # via -r requirements_dev.in
 pre-commit-hooks==3.3.0
     # via -r requirements_dev.in
@@ -80,38 +64,20 @@ pycodestyle==2.11.1
     #   flake8-print
 pyflakes==3.1.0
     # via flake8
-pysocks==1.7.1
-    # via urllib3
 pyyaml==6.0.1
     # via pre-commit
-ruamel-yaml==0.18.5
+ruamel-yaml==0.18.6
     # via pre-commit-hooks
 ruamel-yaml-clib==0.2.8
     # via ruamel-yaml
-selenium==4.16.0
-    # via -r requirements_dev.in
-sniffio==1.3.0
-    # via trio
-sortedcontainers==2.4.0
-    # via trio
 toml==0.10.2
     # via pre-commit-hooks
 tomli==2.0.1
     # via black
-trio==0.24.0
-    # via
-    #   selenium
-    #   trio-websocket
-trio-websocket==0.11.1
-    # via selenium
-typing-extensions==4.8.0
+typing-extensions==4.9.0
     # via black
-urllib3[socks]==2.1.0
-    # via selenium
 virtualenv==20.25.0
     # via pre-commit
-wsproto==1.2.0
-    # via trio-websocket
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools

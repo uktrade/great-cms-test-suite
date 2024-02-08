@@ -1,5 +1,7 @@
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.ui import Select, WebDriverWait
 
 from config.settings import ROOT
 
@@ -17,6 +19,7 @@ class BasePage:
         self.path = path
         self.url = f'{self.root}{self.path}'
         self.context = context
+        self.wait = WebDriverWait(context.browser, 30)
 
     def accept_cookies(self):
         """
@@ -26,8 +29,13 @@ class BasePage:
 
         try:
             link = self.context.browser.find_element(By.LINK_TEXT, 'Accept all cookies')
+            self.wait.until(ec.element_to_be_clickable(link))
             link.click()
+            # cookie popup closed
+            self.wait.until(ec.staleness_of(link))
         except NoSuchElementException:  # Cookie popup already accepted
+            pass
+        except TimeoutException:
             pass
 
     def get_url(self):
@@ -37,6 +45,7 @@ class BasePage:
         """
 
         self.context.browser.get(self.url)
+        self.wait.until(ec.url_to_be(self.url))
 
     def get_link(self, link_text):
         """

@@ -14,7 +14,3 @@ flake8-print==5.0.0
 flake8-quotes==3.3.2
 flake8-string-format==0.3.0
 pre-commit
-
-# Testing
-# -------------
-selenium==4.16.0
