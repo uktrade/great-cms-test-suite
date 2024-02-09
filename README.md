@@ -47,9 +47,12 @@ that is not added to version control. To create a template secrets file with dum
 | make load_tests               | Run load tests |
 | make security_tests           | Run security tests |
 | make ui_tests                 | Run UI tests |
+| behavioural_tests_local       | Runs behave tests against a locally available browser |
+| behavioural_tests_browserstack| Runs behave tests on browserstack [`see below`](#browserstack) |
 
 
 ### Folder structure
+* `behavioural` - UI tests written in `behave` syntax
 * `integration` - contains integration tests
 * `load` - contains load tests
 * `security` - contains security tests
@@ -58,6 +61,10 @@ that is not added to version control. To create a template secrets file with dum
 
 *Note it is envisaged that confidence tests are derived from marked tests in the above categories*
 ___
+
+## Browserstack
+Browserstack can be used to evaluate the behave tests against the suite of devices defined in `browserstack.yml`. To use browserstack locally the environmental variables `BROWSERSTACK_USERNAME` and `BROWSERSTACK_ACCESS_KEY` must be present in `config/env/secrets-do-not-commit`.
+
 
 ## Helpful links
 
