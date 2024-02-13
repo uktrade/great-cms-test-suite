@@ -19,7 +19,7 @@ class BasePage:
         self.path = path
         self.url = f'{self.root}{self.path}'
         self.context = context
-        self.wait = WebDriverWait(context.browser, 30)
+        self.wait = WebDriverWait(context.browser, 60)
 
     def accept_cookies(self):
         """

@@ -23,7 +23,7 @@ def step_click_link(context):
     # wait until page has a different url
     # todo (if we stick with selenium) lift this up to a base class e.g. via click methods below
     # https://github.com/uktrade/great-cms/blob/2e77269f1a5180c674e751bbbece0b2ca5e41606/tests/ui/utils/test_helpers.py#L41
-    wait = WebDriverWait(context.browser, 10)
+    wait = WebDriverWait(context.browser, 60)
     wait.until(ec.url_changes(homepage.url))
 
 

@@ -48,7 +48,7 @@ parallelsPerPlatform: 5
 browserstackLocal: true
 browserStackLocalOptions:
   forceLocal: true
-buildName: great-cms-behavioural-tests-${DATE_TIME}
+buildName: great-cms-behavioural-tests
 buildIdentifier: ${DATE_TIME}
 projectName: great-cms-test-suite
 debug: false

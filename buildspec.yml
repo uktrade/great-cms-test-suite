@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - echo "Update"
+      - apt-get update -y
+      - apt-get install libstdc++6-amd64-cross -y
+      - ln -s /usr/x86_64-linux-gnu/lib64/ /lib64
+      - LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lib64:/usr/x86_64-linux-gnu/lib"
+      - echo "Install / configure pip"
+      - pip install -U pip
+      - pip install pip-tools
+  pre_build:
+    commands:
+      - echo "Compiling dependencies..."
+      - make requirements
+      - echo "Install dependencies..."
+      - make install_requirements
+  build:
+    commands:
+      - browserstack-sdk behave ./tests/behavioural/features/
+  post_build:
+    commands:
+      - echo "Build completed successfully."
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes

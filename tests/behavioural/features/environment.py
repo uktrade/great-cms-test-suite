@@ -1,16 +1,9 @@
-import os
-
 from selenium import webdriver
+
+from config.settings import BROWSERSTACK_ACCESS_KEY, BROWSERSTACK_USERNAME, USE_BROWSERSTACK
 
 # browserstack code slightly modified from
 # from https://github.com/browserstack/behave-browserstack/blob/master/features/environment.py
-USE_BROWSERSTACK = os.environ['BEHAVE_USE_BROWSERSTACK'] if 'BEHAVE_USE_BROWSERSTACK' in os.environ else False
-
-if USE_BROWSERSTACK:
-    # both username and access key are required to use browserstack
-    # an exception will be raised if they are not present
-    BROWSERSTACK_USERNAME = os.environ['BROWSERSTACK_USERNAME']
-    BROWSERSTACK_ACCESS_KEY = os.environ['BROWSERSTACK_ACCESS_KEY']
 
 
 def before_scenario(context, scenario):  # noqa: C901
@@ -40,6 +33,7 @@ def before_scenario(context, scenario):  # noqa: C901
                 options = webdriver.SafariOptions()
                 options.add_argument('--headless')
                 context.browser = webdriver.Safari(options=options)
+    context.browser.maximize_window()
 
 
 def after_scenario(context, scenario):
