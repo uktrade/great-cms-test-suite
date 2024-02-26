@@ -5,10 +5,6 @@ platforms:
     browserName: Chrome
     browserVersion: latest
   - os: Windows
-    osVersion: 10
-    browserName: Chrome
-    browserVersion: latest
-  - os: Windows
     osVersion: 11
     browserName: Edge
     browserVersion: latest
@@ -17,23 +13,23 @@ platforms:
     browserName: Firefox
     browserVersion: latest
   - os: OS X
-    osVersion: Ventura
+    osVersion: Sonoma
     browserName: Chrome
     browserVersion: latest
   - os: OS X
-    osVersion: Ventura
+    osVersion: Sonoma
     browserName: Safari
     browserVersion: latest
   - os: OS X
-    osVersion: Ventura
+    osVersion: Sonoma
     browserName: Firefox
     browserVersion: latest
-  - deviceName: iPhone 14 Pro Max
-    osVersion: 16
+  - deviceName: iPhone 15 Pro Max
+    osVersion: 17
     browserName: safari
     deviceOrientation: portrait
-  - deviceName: iPhone 14 Pro Max
-    osVersion: 16
+  - deviceName: iPhone 15 Pro Max
+    osVersion: 17
     browserName: chrome
     deviceOrientation: portrait
   - deviceName: Google Pixel 7

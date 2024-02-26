@@ -19,6 +19,7 @@ phases:
       - make requirements
       - echo "Install dependencies..."
       - make install_requirements
+      - echo "Configure VPN"
   build:
     commands:
       - browserstack-sdk behave ./tests/behavioural/features/

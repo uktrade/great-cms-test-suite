@@ -14,3 +14,5 @@ RUN pip install -U pip
 RUN pip install pip-tools
 RUN make requirements
 RUN make install_requirements
+
+RUN sudo apt-get -y install openvpn unzip
