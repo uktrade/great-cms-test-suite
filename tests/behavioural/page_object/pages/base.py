@@ -1,12 +1,12 @@
+from behave.runner import Context as behave_context
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.support.ui import WebDriverWait
 
 from config.settings import ROOT
+from tests.behavioural.utils.test_helpers import TestHelper
 
 
-class BasePage:
+class BasePage(TestHelper):
     """
     The base page class for all pages under the POM (Page Object Model) Behave structure. All page classes should
     inherit from BasePage. All common functionality should be added here (e.g. accept cookies).
@@ -14,12 +14,11 @@ class BasePage:
     POM (Page Object Model) reference: https://www.martinfowler.com/bliki/PageObject.html
     """
 
-    def __init__(self, context, path):
+    def __init__(self, context: behave_context, path: str):
         self.root = ROOT
         self.path = path
         self.url = f'{self.root}{self.path}'
-        self.context = context
-        self.wait = WebDriverWait(context.browser, 60)
+        super().__init__(context)
 
     def accept_cookies(self):
         """
@@ -28,11 +27,7 @@ class BasePage:
         """
 
         try:
-            link = self.context.browser.find_element(By.LINK_TEXT, 'Accept all cookies')
-            self.wait.until(ec.element_to_be_clickable(link))
-            link.click()
-            # cookie popup closed
-            self.wait.until(ec.staleness_of(link))
+            self.do_click_link((By.LINK_TEXT, 'Accept all cookies'))
         except NoSuchElementException:  # Cookie popup already accepted
             pass
         except TimeoutException:
@@ -43,16 +38,4 @@ class BasePage:
         Retrieves the page URL in the browser
         :return: None
         """
-
-        self.context.browser.get(self.url)
-        self.wait.until(ec.url_to_be(self.url))
-
-    def get_link(self, link_text):
-        """
-        Retrieve a link from the page based off the link text
-        :return: Link object
-        """
-
-        link = self.context.browser.find_element(By.LINK_TEXT, link_text)
-
-        return link
+        self.navigate(self.url)
