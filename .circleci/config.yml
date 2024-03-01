@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  browser-tools: circleci/browser-tools@1.4.2
+
 ###############################################################################
 # Variables
 ###############################################################################
@@ -38,6 +41,7 @@ install_libcairo2: &install_libcairo2
       sudo apt-get update
       sudo apt-get install libcairo2-dev
 
+
 ###############################################################################
 # Jobs
 ###############################################################################
@@ -71,20 +75,6 @@ jobs:
             pip install black
             black ./ --check
 
-  test_behavioural:
-    docker:
-      - <<: *python
-    steps:
-      - checkout
-      - run:
-          name: Run behave
-          command: |
-            python3 -m venv .venv
-            . .venv/bin/activate
-            pip install behave
-            make behavioural_tests
-
-
 ###############################################################################
 # Workflows
 ###############################################################################
@@ -93,6 +83,5 @@ workflows:
   version: 2
   test_and_checks:
     jobs:
-      - test_behavioural
       - flake8
       - black

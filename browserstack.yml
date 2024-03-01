@@ -1,0 +1,52 @@
+framework: behave
+platforms:
+  - os: Windows
+    osVersion: 11
+    browserName: Chrome
+    browserVersion: latest
+  - os: Windows
+    osVersion: 11
+    browserName: Edge
+    browserVersion: latest
+  - os: Windows
+    osVersion: 11
+    browserName: Firefox
+    browserVersion: latest
+  - os: OS X
+    osVersion: Sonoma
+    browserName: Chrome
+    browserVersion: latest
+  - os: OS X
+    osVersion: Sonoma
+    browserName: Safari
+    browserVersion: latest
+  - os: OS X
+    osVersion: Sonoma
+    browserName: Firefox
+    browserVersion: latest
+  - deviceName: iPhone 15 Pro Max
+    osVersion: 17
+    browserName: safari
+    deviceOrientation: portrait
+  - deviceName: iPhone 15 Pro Max
+    osVersion: 17
+    browserName: chrome
+    deviceOrientation: portrait
+  - deviceName: Google Pixel 7
+    osVersion: 13.0
+    browserName: chrome
+    deviceOrientation: portrait
+  - deviceName: Samsung Galaxy S23 Ultra
+    osVersion: 13.0
+    browserName: samsung
+    deviceOrientation: portrait
+parallelsPerPlatform: 5
+browserstackLocal: true
+browserStackLocalOptions:
+  forceLocal: true
+buildName: great-cms-behavioural-tests
+buildIdentifier: ${DATE_TIME}
+projectName: great-cms-test-suite
+debug: false
+networkLogs: false
+consoleLogs: verbose

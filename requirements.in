@@ -1,0 +1,8 @@
+# Testing
+# -------------
+selenium==4.16.0
+browserstack-sdk
+faker
+pytest-selenium
+webdriver-manager
+behave
