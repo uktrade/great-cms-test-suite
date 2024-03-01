@@ -33,7 +33,6 @@ def before_scenario(context, scenario):  # noqa: C901
                 options = webdriver.SafariOptions()
                 options.add_argument('--headless')
                 context.browser = webdriver.Safari(options=options)
-    context.browser.maximize_window()
 
 
 def after_scenario(context, scenario):

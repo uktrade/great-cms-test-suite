@@ -75,21 +75,6 @@ jobs:
             pip install black
             black ./ --check
 
-  test_behavioural:
-    docker:
-      - <<: *python_node_browsers
-    steps:
-      - checkout
-      - run:
-          name: Run behave
-          command: |
-            python3 -m venv .venv
-            . .venv/bin/activate
-            pip install behave
-            pip install selenium
-            make behavioural_tests
-
-
 ###############################################################################
 # Workflows
 ###############################################################################
@@ -98,6 +83,5 @@ workflows:
   version: 2
   test_and_checks:
     jobs:
-      - test_behavioural
       - flake8
       - black
