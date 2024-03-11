@@ -1,4 +1,4 @@
-from tests.behavioural.page_object.pages.base import BasePage
+from tests.behavioural.pages.base import BasePage
 
 
 class GuidanceAndSupportPage(BasePage):
