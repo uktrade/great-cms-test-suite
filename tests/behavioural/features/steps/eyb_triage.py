@@ -8,7 +8,7 @@ from tests.behavioural.pages.expand_your_business.sector_form import SectorForm
 from tests.behavioural.pages.expand_your_business.spend_form import SpendForm
 
 
-@when("I start the triage")
+@when('I start the triage')
 def step_start_triage(context):
     landing_page = ExpandYourBusiness(context)
     landing_page.start_triage()
@@ -17,7 +17,7 @@ def step_start_triage(context):
     assert context.browser.current_url == sector_form_page.url
 
 
-@when("I complete step 1 of the triage")
+@when('I complete step 1 of the triage')
 def step_triage_stage_1(context):
     sector_form_page = SectorForm(context)
     # error flow
@@ -32,7 +32,7 @@ def step_triage_stage_1(context):
     sector_form_page.submit()
 
 
-@when("I complete step 2 of the triage")
+@when('I complete step 2 of the triage')
 def step_triage_stage_2(context):
     intent_form_page = IntentForm(context)
     assert context.browser.current_url == intent_form_page.url
@@ -48,7 +48,7 @@ def step_triage_stage_2(context):
     intent_form_page.submit()
 
 
-@when("I complete step 3 of the triage")
+@when('I complete step 3 of the triage')
 def step_triage_stage_3(context):
     location_form_page = LocationForm(context)
     assert context.browser.current_url == location_form_page.url
@@ -65,7 +65,7 @@ def step_triage_stage_3(context):
     location_form_page.submit()
 
 
-@when("I complete step 4 of the triage")
+@when('I complete step 4 of the triage')
 def step_triage_stage_4(context):
     hiring_form_page = HiringForm(context)
     assert context.browser.current_url == hiring_form_page.url
@@ -81,7 +81,7 @@ def step_triage_stage_4(context):
     hiring_form_page.submit()
 
 
-@when("I complete step 5 of the triage")
+@when('I complete step 5 of the triage')
 def step_triage_stage_5(context):
     spend_form_page = SpendForm(context)
     assert context.browser.current_url == spend_form_page.url

@@ -1,9 +1,17 @@
+from behave import use_fixture
 from selenium import webdriver
 
 from config.settings import BROWSERSTACK_ACCESS_KEY, BROWSERSTACK_USERNAME, USE_BROWSERSTACK
+from tests.behavioural.fixtures import eyb_random_data
 
 # browserstack code slightly modified from
 # from https://github.com/browserstack/behave-browserstack/blob/master/features/environment.py
+
+
+def before_feature(context, feature):
+    for tag in feature.tags:
+        if tag == 'eyb_random_data':
+            use_fixture(eyb_random_data, context)
 
 
 def before_scenario(context, scenario):  # noqa: C901
@@ -15,7 +23,7 @@ def before_scenario(context, scenario):  # noqa: C901
         for tag in scenario.tags:
             if tag == 'Chrome':
                 options = webdriver.ChromeOptions()
-                # options.add_argument('--headless')
+                options.add_argument('--headless')
                 context.browser = webdriver.Chrome(options=options)
             elif tag == 'Firefox':
                 options = webdriver.FirefoxOptions()
@@ -35,7 +43,7 @@ def before_scenario(context, scenario):  # noqa: C901
                 context.browser = webdriver.Safari(options=options)
 
 
-def after_scenario(context, scenario):
+def after_scenario(context, feature):
     if USE_BROWSERSTACK:
         if context.failed is True:
             context.browser.execute_script(

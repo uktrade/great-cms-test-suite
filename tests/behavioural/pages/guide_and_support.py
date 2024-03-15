@@ -7,5 +7,5 @@ class GuidanceAndSupportPage(BasePage):
     """
 
     def __init__(self, context):
-        self.path = 'support/guidance-and-support/'
+        self.path = 'support/export-support/'
         super().__init__(context, self.path)

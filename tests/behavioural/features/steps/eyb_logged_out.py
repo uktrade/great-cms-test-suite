@@ -13,7 +13,7 @@ def step_visit_eyb_landing_page(context):
     assert context.browser.current_url == landing_page.url
 
 
-@when("I complete the triage")
+@when('I complete the triage')
 def step_complete_triage(context):
     context.execute_steps(
         """
@@ -27,7 +27,7 @@ def step_complete_triage(context):
     )
 
 
-@then("The guide page is displayed with limited information")
+@then('The guide page is displayed with limited information')
 def step_guide_page_displayed(context):
     guide_page = GuidePage(context)
     # using in here as current_url contains a fragment id (#spend_container)

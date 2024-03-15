@@ -19,3 +19,15 @@ class GuidePage(BasePage):
 
     def sign_up_banner_displayed(self):
         return self.is_visible((By.ID, 'sign-up-banner'))
+
+    def sign_up_success_banner_displayed(self):
+        return self.is_visible(
+            (By.CSS_SELECTOR, "div[class='govuk-notification-banner govuk-notification-banner--success']")
+        )
+
+    def entered_information_displayed(self):
+        content = self.find_element((By.ID, 'content')).text
+        return (
+            self.context.user_data['company_name'] in content
+            and self.context.user_data['company_headquarters'] in content
+        )

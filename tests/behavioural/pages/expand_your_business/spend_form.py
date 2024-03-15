@@ -28,9 +28,7 @@ class SpendForm(BasePage):
         self.wait_for_url_change(self.url)
 
     def spend_options_greater_than_zero(self):
-        elements = self.find_elements((By.XPATH, "//input[@name='spend']"))
-        print(f"len elements {len(elements)}")
-        return True
+        return len(self.find_elements((By.XPATH, "//input[@name='spend']"))) > 0
 
     def choose_random_spend_option(self):
         # click on the label because parent div is full width and so clicking in the middle doesn't set value

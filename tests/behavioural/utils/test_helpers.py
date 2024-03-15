@@ -14,6 +14,7 @@ MOBILE_DEVICE = 2
 
 class TestHelper:
     def __init__(self, context: behave_context):
+        self.context = context
         self.driver = context.browser
         self._wait = WebDriverWait(self.driver, 20)
         self.driver.maximize_window()
