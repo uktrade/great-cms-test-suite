@@ -12,9 +12,5 @@ class ExpandYourBusiness(BasePage):
         self.path = 'international/expand-your-business-in-the-uk/'
         super().__init__(context, self.path)
 
-    # overriding as International cookie banner uses different wording
-    def accept_cookies(self):
-        self.do_click((By.ID, 'atlas-cookie-accept-all'))
-
     def start_triage(self):
         self.do_click_link((By.LINK_TEXT, 'Start now'))

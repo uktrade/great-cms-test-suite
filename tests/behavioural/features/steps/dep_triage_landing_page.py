@@ -8,7 +8,7 @@ from tests.behavioural.pages.homepage import HomePage
 def step_visit_homepage(context):
     homepage = HomePage(context)
     homepage.get_url()
-    homepage.accept_cookies()
+    homepage.accept_domestic_cookies()
 
     assert context.browser.current_url == homepage.url
 

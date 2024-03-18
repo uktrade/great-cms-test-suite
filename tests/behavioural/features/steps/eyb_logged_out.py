@@ -8,7 +8,7 @@ from tests.behavioural.pages.expand_your_business.landing_page import ExpandYour
 def step_visit_eyb_landing_page(context):
     landing_page = ExpandYourBusiness(context)
     landing_page.get_url()
-    landing_page.accept_cookies()
+    landing_page.accept_international_cookies()
 
     assert context.browser.current_url == landing_page.url
 
