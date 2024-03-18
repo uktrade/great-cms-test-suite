@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements_dev.in
 #
-black==24.1.1
+black==24.2.0
     # via
     #   -r requirements_dev.in
     #   blacken-docs
@@ -35,7 +35,7 @@ flake8-quotes==3.3.2
     # via -r requirements_dev.in
 flake8-string-format==0.3.0
     # via -r requirements_dev.in
-identify==2.5.33
+identify==2.5.35
     # via pre-commit
 isort==5.12.0
     # via -r requirements_dev.in
@@ -45,7 +45,7 @@ mypy-extensions==1.0.0
     # via black
 nodeenv==1.8.0
     # via pre-commit
-packaging==23.2
+packaging==24.0
     # via black
 pathspec==0.12.1
     # via black
@@ -53,7 +53,7 @@ platformdirs==4.2.0
     # via
     #   black
     #   virtualenv
-pre-commit==3.6.0
+pre-commit==3.6.2
     # via -r requirements_dev.in
 pre-commit-hooks==3.3.0
     # via -r requirements_dev.in
@@ -74,9 +74,9 @@ toml==0.10.2
     # via pre-commit-hooks
 tomli==2.0.1
     # via black
-typing-extensions==4.9.0
+typing-extensions==4.10.0
     # via black
-virtualenv==20.25.0
+virtualenv==20.25.1
     # via pre-commit
 
 # The following packages are considered to be unsafe in a requirements file:

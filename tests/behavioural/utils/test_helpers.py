@@ -14,6 +14,7 @@ MOBILE_DEVICE = 2
 
 class TestHelper:
     def __init__(self, context: behave_context):
+        self.context = context
         self.driver = context.browser
         self._wait = WebDriverWait(self.driver, 20)
         self.driver.maximize_window()
@@ -59,7 +60,6 @@ class TestHelper:
         return element
 
     def find_elements(self, locator: Tuple[str, str]):
-        self._wait.until(ec.visibility_of_element_located(locator))
         elements = self.driver.find_elements(locator[0], locator[1])
         return elements
 
@@ -78,3 +78,6 @@ class TestHelper:
 
     def wait_for_refresh(self, element):
         return self._wait.until(ec.staleness_of(element))
+
+    def wait_for_url_change(self, url):
+        return self._wait.until(ec.url_changes(url))

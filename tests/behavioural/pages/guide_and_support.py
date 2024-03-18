@@ -1,4 +1,4 @@
-from tests.behavioural.page_object.pages.base import BasePage
+from tests.behavioural.pages.base import BasePage
 
 
 class GuidanceAndSupportPage(BasePage):
@@ -7,5 +7,5 @@ class GuidanceAndSupportPage(BasePage):
     """
 
     def __init__(self, context):
-        self.path = 'support/guidance-and-support/'
+        self.path = 'support/export-support/'
         super().__init__(context, self.path)

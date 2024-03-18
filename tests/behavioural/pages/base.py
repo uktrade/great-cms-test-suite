@@ -20,14 +20,27 @@ class BasePage(TestHelper):
         self.url = f'{self.root}{self.path}'
         super().__init__(context)
 
-    def accept_cookies(self):
+    def accept_domestic_cookies(self):
         """
-        Accepts the cookie pop up banner (if present)
+        Accepts the cookie pop up banner on domestic site (if present)
         :return: None
         """
 
         try:
             self.do_click_link((By.LINK_TEXT, 'Accept all cookies'))
+        except NoSuchElementException:  # Cookie popup already accepted
+            pass
+        except TimeoutException:
+            pass
+
+    def accept_international_cookies(self):
+        """
+        Accepts the cookie pop up banner on international site (if present)
+        :return: None
+        """
+
+        try:
+            self.do_click_link((By.ID, 'atlas-cookie-accept-all'))
         except NoSuchElementException:  # Cookie popup already accepted
             pass
         except TimeoutException:
