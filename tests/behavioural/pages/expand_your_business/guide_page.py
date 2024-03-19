@@ -31,3 +31,8 @@ class GuidePage(BasePage):
             self.context.user_data['company_name'] in content
             and self.context.user_data['company_headquarters'] in content
         )
+
+    def articles_displayed(self):
+        return (
+            len(self.find_elements((By.XPATH, "//div[@id='personalised-guide']//div[@class='article-list-item']"))) > 0
+        )

@@ -13,7 +13,7 @@ def step_register_user(context):
     assert context.browser.current_url == signup_page.url
 
 
-@when('I enter login credentials')
+@when('I enter registration credentials')
 def step_login_credentials(context):
     signup_page = SignUpPage(context)
     signup_page.enter_email_address(context.user_data['email_address'])
@@ -45,7 +45,7 @@ def step_add_company_details(context):
     signup_company_form.submit()
 
 
-@then('I am am taken to the EYB guide page')
+@then('I am am taken to the EYB guide page with registration confirmation')
 def step_eyb_guide_page(context):
     guide_page = GuidePage(context)
     assert guide_page.url in context.browser.current_url
