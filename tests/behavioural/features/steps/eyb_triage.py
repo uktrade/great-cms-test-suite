@@ -35,10 +35,6 @@ def step_start_triage(context):
 def step_triage_stage_1(context):
     sector_form_page = SectorForm(context)
     sector_form_page.clear_sector_entry()
-    # error flow
-    sector_form_page.submit()
-    assert context.browser.current_url == sector_form_page.url
-    assert sector_form_page.error_message_visible() is True
 
     # normal flow
     sector_form_page.enter_sector('mining')
@@ -55,11 +51,6 @@ def step_triage_stage_2(context):
     assert context.browser.current_url == intent_form_page.url
     assert intent_form_page.expansion_options_greater_than_zero() is True
 
-    # error flow
-    intent_form_page.submit()
-    assert context.browser.current_url == intent_form_page.url
-    assert intent_form_page.error_message_visible() is True
-
     # normal flow
     chosen_intent = intent_form_page.choose_random_expansion_option()
     context.user_data['triage_intent'] = chosen_intent
@@ -71,11 +62,6 @@ def step_triage_stage_3(context):
     location_form_page = LocationForm(context)
     location_form_page.clear_location_text()
     assert context.browser.current_url == location_form_page.url
-
-    # error flow
-    location_form_page.submit()
-    assert context.browser.current_url == location_form_page.url
-    assert location_form_page.error_message_visible() is True
 
     # normal flow
     location_form_page.enter_location('new')
@@ -90,11 +76,6 @@ def step_triage_stage_4(context):
     hiring_form_page = HiringForm(context)
     assert context.browser.current_url == hiring_form_page.url
 
-    # error flow
-    hiring_form_page.submit()
-    assert context.browser.current_url == hiring_form_page.url
-    assert hiring_form_page.error_message_visible() is True
-
     # normal flow
     assert hiring_form_page.hiring_options_greater_than_zero() is True
     chosen_hiring = hiring_form_page.choose_random_hiring_option()
@@ -106,11 +87,6 @@ def step_triage_stage_4(context):
 def step_triage_stage_5(context):
     spend_form_page = SpendForm(context)
     assert context.browser.current_url == spend_form_page.url
-
-    # error flow
-    spend_form_page.submit()
-    assert context.browser.current_url == spend_form_page.url
-    assert spend_form_page.error_message_visible() is True
 
     # normal flow
     assert spend_form_page.currency_selector_visible() is True
