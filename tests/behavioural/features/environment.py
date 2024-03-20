@@ -25,7 +25,7 @@ def before_scenario(context, scenario):  # noqa: C901
         for tag in scenario.tags:
             if tag == 'Chrome':
                 options = webdriver.ChromeOptions()
-                # options.add_argument('--headless')
+                options.add_argument('--headless')
                 context.browser = webdriver.Chrome(options=options)
             elif tag == 'Firefox':
                 options = webdriver.FirefoxOptions()

@@ -75,23 +75,23 @@ def step_modify_answers_and_verify(context):
     change_answers_page = ChangeAnswersPage(context)
 
     change_answers_page.click_change_sector()
-    context.execute_steps("When I complete step 1 of the triage")
+    context.execute_steps('When I complete step 1 of the triage')
     assert context.browser.current_url == change_answers_page.url
 
     change_answers_page.click_change_intent()
-    context.execute_steps("When I complete step 2 of the triage")
+    context.execute_steps('When I complete step 2 of the triage')
     assert context.browser.current_url == change_answers_page.url
 
     change_answers_page.click_change_location()
-    context.execute_steps("When I complete step 3 of the triage")
+    context.execute_steps('When I complete step 3 of the triage')
     assert context.browser.current_url == change_answers_page.url
 
     change_answers_page.click_change_hiring()
-    context.execute_steps("When I complete step 4 of the triage")
+    context.execute_steps('When I complete step 4 of the triage')
     assert context.browser.current_url == change_answers_page.url
 
     change_answers_page.click_change_planned_spend()
-    context.execute_steps("When I complete step 5 of the triage")
+    context.execute_steps('When I complete step 5 of the triage')
     assert context.browser.current_url == change_answers_page.url
 
-    context.execute_steps("Then the data presented matches previously entered data")
+    context.execute_steps('Then the data presented matches previously entered data')
