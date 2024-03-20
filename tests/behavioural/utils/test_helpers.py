@@ -1,6 +1,6 @@
 from typing import Tuple
 
-from behave.runner import Context as behave_context
+from behave.runner import Context as BehaveContext
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import Select, WebDriverWait
 
@@ -13,7 +13,7 @@ MOBILE_DEVICE = 2
 
 
 class TestHelper:
-    def __init__(self, context: behave_context):
+    def __init__(self, context: BehaveContext):
         self.context = context
         self.driver = context.browser
         self._wait = WebDriverWait(self.driver, 20)
