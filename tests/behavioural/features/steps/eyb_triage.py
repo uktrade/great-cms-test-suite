@@ -27,6 +27,7 @@ def step_complete_triage(context):
 @when('I start the triage')
 def step_start_triage(context):
     landing_page = ExpandYourBusiness(context)
+    landing_page.get_url()
     landing_page.start_triage()
     sector_form_page = SectorForm(context)
 
