@@ -40,7 +40,7 @@ secrets:
 	fi
 
 behavioural_tests_local:
-	ENV_FILES='secrets-do-not-commit,dev' behave ./tests/behavioural/features/
+	ENV_FILES='secrets-do-not-commit,dev' behave ./tests/behavioural/features/ $(ARGUMENTS)
 
 behavioural_tests_browserstack:
 	ENV_FILES='secrets-do-not-commit,dev' USE_BROWSERSTACK=True browserstack-sdk behave ./tests/behavioural/features/
