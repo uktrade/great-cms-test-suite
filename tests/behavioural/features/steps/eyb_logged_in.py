@@ -53,6 +53,12 @@ def step_click_change_answers(context):
     guide_page.click_change_answers()
 
 
+@then('I am taken to the Change your answers summary page')
+def step_change_answers_summary_page_displayed(context):
+    change_answers_page = ChangeAnswersPage(context)
+    assert context.browser.current_url == change_answers_page.url
+
+
 @then('the data presented matches previously entered data')
 def step_change_answers_summary_page(context):
     change_answers_page = ChangeAnswersPage(context)
@@ -61,4 +67,31 @@ def step_change_answers_summary_page(context):
     triage_keys = ['triage_sector', 'triage_intent', 'triage_location', 'triage_hiring', 'triage_spend']
 
     for key in triage_keys:
-        assert context.user_data[key] in content
+        assert (context.user_data[key] in content) is True
+
+
+@then('clicking change beside an attribute enables the answer to be changed and persisted')
+def step_modify_answers_and_verify(context):
+    change_answers_page = ChangeAnswersPage(context)
+
+    change_answers_page.click_change_sector()
+    context.execute_steps("When I complete step 1 of the triage")
+    assert context.browser.current_url == change_answers_page.url
+
+    change_answers_page.click_change_intent()
+    context.execute_steps("When I complete step 2 of the triage")
+    assert context.browser.current_url == change_answers_page.url
+
+    change_answers_page.click_change_location()
+    context.execute_steps("When I complete step 3 of the triage")
+    assert context.browser.current_url == change_answers_page.url
+
+    change_answers_page.click_change_hiring()
+    context.execute_steps("When I complete step 4 of the triage")
+    assert context.browser.current_url == change_answers_page.url
+
+    change_answers_page.click_change_planned_spend()
+    context.execute_steps("When I complete step 5 of the triage")
+    assert context.browser.current_url == change_answers_page.url
+
+    context.execute_steps("Then the data presented matches previously entered data")

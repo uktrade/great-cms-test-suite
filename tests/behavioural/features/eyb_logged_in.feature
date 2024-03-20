@@ -32,3 +32,4 @@ Feature: Expand Your Business
         And I click change your answers
         Then I am taken to the Change your answers summary page
         And the data presented matches previously entered data
+        And clicking change beside an attribute enables the answer to be changed and persisted
