@@ -5,7 +5,11 @@ Feature: Single Sign On
 
   @Chrome
   Scenario: User can sign up to the Great services
-    Given I am on the sign up page
+    Given I am on the great.gov.uk homepage
+    When I click the navigation bar sign in link
+    When I am on the main sign in page
+    When I click the sign up link
+    When I am on the main sign up page
     When I enter email and password
     When I enter my new confirmation code
     When I click continue on the confirmation page
@@ -13,6 +17,7 @@ Feature: Single Sign On
 
   @Chrome
   Scenario: User can sign in to the Great services
-    Given I am on the login page
+    Given I am on the great homepage
+    When I click the sign in link
     When I enter sso login credentials
     Then I am taken to the user dashboard page

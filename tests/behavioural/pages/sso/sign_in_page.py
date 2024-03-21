@@ -8,6 +8,9 @@ class SignInPage(BasePage):
         self.path = 'login/'
         super().__init__(context, self.path)
 
+    def press_sign_up_link(self):
+        self.do_click_link((By.LINK_TEXT, 'Sign up'))
+
     def press_sign_in_button(self):
         self.do_click_link((By.XPATH, "//button[text()='Sign in']"))
 

@@ -1,14 +1,22 @@
 from behave import given, then, when
 
+from tests.behavioural.pages.homepage import HomePage
 from tests.behavioural.pages.sso.dashboard_page import DashboardPage
 from tests.behavioural.pages.sso.sign_in_page import SignInPage
 
 
-@given('I am on the login page')
-def step_sign_in_user(context):
-    sign_in_page = SignInPage(context)
-    sign_in_page.get_url()
-    assert context.browser.current_url == sign_in_page.url
+@given('I am on the great homepage')
+def step_start_on_great(context):
+    homepage = HomePage(context)
+    homepage.get_url()
+    homepage.accept_domestic_cookies()
+    assert context.browser.current_url == homepage.url
+
+
+@when('I click the sign in link')
+def step_navigate_to_sign_in(context):
+    homepage = HomePage(context)
+    homepage.click_sign_in_link()
 
 
 @when('I enter sso login credentials')

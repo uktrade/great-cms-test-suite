@@ -1,12 +1,41 @@
 from behave import given, then, when
 
+from tests.behavioural.pages.homepage import HomePage
 from tests.behavioural.pages.sso.confirmation_code_page import ConfirmationCodePage
 from tests.behavioural.pages.sso.confirmation_page import ConfirmationPage
 from tests.behavioural.pages.sso.dashboard_page import DashboardPage
+from tests.behavioural.pages.sso.sign_in_page import SignInPage
 from tests.behavioural.pages.sso.sign_up_page import SignUpPage
 
 
-@given('I am on the sign up page')
+@given('I am on the great.gov.uk homepage')
+def step_start_on_great(context):
+    homepage = HomePage(context)
+    homepage.get_url()
+    homepage.accept_domestic_cookies()
+    assert context.browser.current_url == homepage.url
+
+
+@when('I click the navigation bar sign in link')
+def step_navigate_to_sign_in(context):
+    homepage = HomePage(context)
+    homepage.click_sign_in_link()
+
+
+@when('I am on the main sign in page')
+def step_sign_in_user(context):
+    sign_in_page = SignInPage(context)
+    sign_in_page.get_url()
+    assert context.browser.current_url == sign_in_page.url
+
+
+@when('I click the sign up link')
+def step_navigate_to_sign_up(context):
+    sign_in_page = SignInPage(context)
+    sign_in_page.press_sign_up_link()
+
+
+@when('I am on the main sign up page')
 def step_sign_up_user(context):
     sign_up_page = SignUpPage(context)
     sign_up_page.get_url()
