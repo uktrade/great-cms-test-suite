@@ -28,7 +28,12 @@ def step_visit_ukea_landing_page_from_great_home_page(context):
 
 @when('I click “Join the UK export academy” card')
 def step_click_card_to_join_ukea(context):
-    context.great_home_page.click_join_the_uk_export_academy_card()
+    great_home_page = HomePage(context)
+    great_home_page.click_join_the_uk_export_academy_card()
+
+    ukea_landing_page = ExportAcademy(context)
+    ukea_landing_page.get_url()
+    assert context.browser.current_url == ukea_landing_page.url
 
 
 @then('I should see UKEA landing page')
