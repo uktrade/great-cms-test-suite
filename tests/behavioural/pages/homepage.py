@@ -17,3 +17,8 @@ class HomePage(BasePage):
 
     def click_sign_in_link(self):
         self.do_click_link((By.LINK_TEXT, 'Sign in'))
+
+    def click_join_the_uk_export_academy_card(self):
+        self.accept_domestic_cookies()
+        self.do_click_link((By.XPATH, "//span[contains(text(), 'Join the UK Export Academy')]"))
+

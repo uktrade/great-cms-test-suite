@@ -1,4 +1,4 @@
-from behave.runner import Context as behave_context
+from behave.runner import Context as BehaveContext
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
 
@@ -14,7 +14,7 @@ class BasePage(TestHelper):
     POM (Page Object Model) reference: https://www.martinfowler.com/bliki/PageObject.html
     """
 
-    def __init__(self, context: behave_context, path: str):
+    def __init__(self, context: BehaveContext, path: str):
         self.root = ROOT
         self.path = path
         self.url = f'{self.root}{self.path}'
