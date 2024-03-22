@@ -14,6 +14,3 @@ class HomePage(BasePage):
 
     def click_export_support_for_uk_businesses_link(self):
         self.do_click_link((By.LINK_TEXT, 'Export support for UK businesses'))
-
-    def click_sign_in_link(self):
-        self.do_click_link((By.LINK_TEXT, 'Sign in'))
