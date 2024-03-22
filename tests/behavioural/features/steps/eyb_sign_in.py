@@ -12,14 +12,14 @@ def step_register_user(context):
 
 
 @when('I enter login credentials')
-def step_login_credentials(context):
+def step_enter_login_credentials(context):
     signin_page = SignInPage(context)
     signin_page.enter_email_address(context.user_data['email_address'])
     signin_page.enter_password(context.user_data['password'])
     signin_page.press_signin_button()
 
 
-@then('I am am taken to the EYB guide page')
+@then('I am taken to the EYB guide page')
 def step_eyb_guide_page(context):
     guide_page = GuidePage(context)
     assert guide_page.url in context.browser.current_url
@@ -31,6 +31,6 @@ def step_login(context):
         """
             Given I am on the sign-in page
             When I enter login credentials
-            Then I am am taken to the EYB guide page
+            Then I am taken to the EYB guide page
         """
     )

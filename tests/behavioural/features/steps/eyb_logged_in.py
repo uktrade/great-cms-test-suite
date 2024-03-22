@@ -27,14 +27,13 @@ def step_verify_signed_in(context):
     assert landing_page.signed_in() is True
 
 
-@then('The guide page is displayed')
+@then('The guide page and checklist is displayed')
 def step_guide_page_displayed(context):
     guide_page = GuidePage(context)
     # using in here as current_url contains a fragment id (#spend_container)
     assert guide_page.url in context.browser.current_url
 
     assert guide_page.checklist_for_uk_expansion_displayed() is True
-
     guide_page.click_personalised_guide_tab()
     assert guide_page.personalised_guide_displayed() is True
     assert guide_page.articles_displayed() is True

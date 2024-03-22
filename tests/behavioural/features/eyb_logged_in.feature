@@ -9,20 +9,19 @@ Feature: Expand Your Business
         When I enter registration credentials
         And I enter a confirmation code
         And I complete company details
-        Then I am am taken to the EYB guide page with registration confirmation
+        Then I am taken to the EYB guide page with registration confirmation
 
     @Chrome
     Scenario: User can sign in to the EYB service
         Given I am on the sign-in page
         When I enter login credentials
-        Then I am am taken to the EYB guide page
+        Then I am taken to the EYB guide page
 
     @Chrome
     Scenario: User can add related business information
-        Given I am on the EYB landing page
-        When I am signed in
-        And I complete the triage
-        Then the guide page is displayed
+        Given I am signed in
+        When I complete the triage
+        Then the guide page and checklist is displayed
 
     @Chrome
     Scenario: User can edit related business information
@@ -39,4 +38,4 @@ Feature: Expand Your Business
         Given I am signed in
         When I complete the triage
         And I navigate to the EYB guide page
-        Then the guide page is displayed
+        Then the guide page and checklist is displayed

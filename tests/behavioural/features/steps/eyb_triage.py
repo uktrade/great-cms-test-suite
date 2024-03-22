@@ -45,7 +45,9 @@ def step_triage_stage_1(context):
     sector_form_page.enter_sector(choice(eg_sector_choices))
     assert sector_form_page.sector_list_displayed_and_count_greater_than_zero() is True
     chosen_sector = sector_form_page.choose_first_sector_displayed()
-    context.user_data['triage_sector'] = chosen_sector.replace('\n', ', ')
+    # splitting because get text on iOS contains an additional string with the number of occurrences
+    chosen_sector = ''.join(chosen_sector.split('\n')[0:1]).replace('\n', ', ')
+    context.user_data['triage_sector'] = chosen_sector
     sector_form_page.submit()
 
 
@@ -73,7 +75,8 @@ def step_triage_stage_3(context):
     location_form_page.enter_location(choice(eg_location_choices))
     location_form_page.location_list_displayed_and_count_greater_than_zero() is True
     chosen_location = location_form_page.choose_first_location_displayed()
-    context.user_data['triage_location'] = chosen_location
+    # splitting because get text on iOS contains an additional string with the number of occurrences
+    context.user_data['triage_location'] = chosen_location.split('\n')[0]
     location_form_page.submit()
 
 
