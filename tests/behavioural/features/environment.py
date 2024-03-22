@@ -2,7 +2,7 @@ from behave import use_fixture
 from selenium import webdriver
 
 from config.settings import BROWSERSTACK_ACCESS_KEY, BROWSERSTACK_USERNAME, USE_BROWSERSTACK
-from tests.behavioural.fixtures import eyb_random_data
+from tests.behavioural.fixtures import eyb_random_data, great_random_data
 
 # browserstack code slightly modified from
 # from https://github.com/browserstack/behave-browserstack/blob/master/features/environment.py
@@ -12,6 +12,8 @@ def before_feature(context, feature):
     for tag in feature.tags:
         if tag == 'eyb_random_data':
             use_fixture(eyb_random_data, context)
+        if tag == 'great_random_data':
+            use_fixture(great_random_data, context)
 
 
 def before_scenario(context, scenario):  # noqa: C901
