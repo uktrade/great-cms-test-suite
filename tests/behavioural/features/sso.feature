@@ -17,3 +17,11 @@ Feature: Single Sign On
     Given I am on the great homepage
     When I complete the sign in steps
     Then I am taken to the user dashboard page
+
+  @Chrome
+  Scenario: User can sign out to the Great services
+    Given I am on the main homepage
+    When I complete the authentication steps
+    When I am taken to the dashboard page
+    When I click the sign out button
+    Then I am taken back to great.gov.uk
