@@ -12,7 +12,7 @@ def step_start_on_great(context):
     assert context.browser.current_url == homepage.url
 
 
-@when('I complete the authentication steps')
+@given('I complete the authentication steps')
 def step_sign_in(context):
     context.execute_steps(
         """

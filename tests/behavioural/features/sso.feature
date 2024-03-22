@@ -21,7 +21,7 @@ Feature: Single Sign On
   @Chrome
   Scenario: User can sign out to the Great services
     Given I am on the main homepage
-    When I complete the authentication steps
+    And I complete the authentication steps
     When I am taken to the dashboard page
-    When I click the sign out button
+    And I click the sign out button
     Then I am taken back to great.gov.uk

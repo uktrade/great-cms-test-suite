@@ -57,7 +57,7 @@ class BasePage(TestHelper):
         self.do_click_link((By.XPATH, "//button[contains(text(), 'Menu')]"))
 
     def press_sign_in_link(self):
-        self.do_click_link((By.LINK_TEXT, 'Sign in'))
+        self.do_click_link((By.ID, 'sign-in'))
 
     def press_sign_out_link(self):
-        self.do_click_link((By.XPATH, "//button[text()='Sign out']"))
+        self.do_click_link((By.ID, 'sign-out'))
