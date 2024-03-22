@@ -23,3 +23,14 @@ def step_login_credentials(context):
 def step_eyb_guide_page(context):
     guide_page = GuidePage(context)
     assert guide_page.url in context.browser.current_url
+
+
+@given('I am signed in')
+def step_login(context):
+    context.execute_steps(
+        """
+            Given I am on the sign-in page
+            When I enter login credentials
+            Then I am am taken to the EYB guide page
+        """
+    )

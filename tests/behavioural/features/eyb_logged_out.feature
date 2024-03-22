@@ -1,4 +1,4 @@
-@eyb_random_data @wip
+@eyb_random_data
 Feature: Expand Your Business
   As a logged out user
   I want to be able to engage with the Expand Your Business service offering

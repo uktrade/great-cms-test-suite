@@ -36,3 +36,6 @@ class GuidePage(BasePage):
         return (
             len(self.find_elements((By.XPATH, "//div[@id='personalised-guide']//div[@class='article-list-item']"))) > 0
         )
+
+    def click_change_answers(self):
+        self.do_click_link((By.LINK_TEXT, 'Change your answers'))

@@ -1,5 +1,6 @@
 from behave import given, then, when
 
+from tests.behavioural.pages.expand_your_business.change_answers import ChangeAnswersPage
 from tests.behavioural.pages.expand_your_business.guide_page import GuidePage
 from tests.behavioural.pages.expand_your_business.landing_page import ExpandYourBusiness
 
@@ -26,20 +27,6 @@ def step_verify_signed_in(context):
     assert landing_page.signed_in() is True
 
 
-@when('I complete the triage')
-def step_complete_triage(context):
-    context.execute_steps(
-        """
-            When I start the triage
-            And I complete step 1 of the triage
-            And I complete step 2 of the triage
-            And I complete step 3 of the triage
-            And I complete step 4 of the triage
-            And I complete step 5 of the triage
-        """
-    )
-
-
 @then('The guide page is displayed')
 def step_guide_page_displayed(context):
     guide_page = GuidePage(context)
@@ -51,3 +38,27 @@ def step_guide_page_displayed(context):
     guide_page.click_personalised_guide_tab()
     assert guide_page.personalised_guide_displayed() is True
     assert guide_page.articles_displayed() is True
+
+
+@when('I navigate to the EYB guide page')
+def step_navigate_to_guide_page(context):
+    guide_page = GuidePage(context)
+    guide_page.get_url()
+    assert guide_page.url in context.browser.current_url
+
+
+@when('I click change your answers')
+def step_click_change_answers(context):
+    guide_page = GuidePage(context)
+    guide_page.click_change_answers()
+
+
+@then('the data presented matches previously entered data')
+def step_change_answers_summary_page(context):
+    change_answers_page = ChangeAnswersPage(context)
+    content = change_answers_page.get_content_text()
+
+    triage_keys = ['triage_sector', 'triage_intent', 'triage_location', 'triage_hiring', 'triage_spend']
+
+    for key in triage_keys:
+        assert context.user_data[key] in content
