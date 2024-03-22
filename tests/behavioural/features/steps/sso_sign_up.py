@@ -19,7 +19,7 @@ def step_start_on_great(context):
 @when('I click the navigation bar sign in link')
 def step_navigate_to_sign_in(context):
     homepage = HomePage(context)
-    homepage.click_sign_in_link()
+    homepage.press_sign_in_link()
 
 
 @when('I am on the main sign in page')
@@ -40,6 +40,18 @@ def step_sign_up_user(context):
     sign_up_page = SignUpPage(context)
     sign_up_page.get_url()
     assert context.browser.current_url == sign_up_page.url
+
+
+@given('I navigate to the sign up page')
+def step_sign_in(context):
+    context.execute_steps(
+        """
+            When I click the navigation bar sign in link
+            And I am on the main sign in page
+            And I click the sign up link
+            And I am on the main sign up page
+        """
+    )
 
 
 @when('I enter email and password')

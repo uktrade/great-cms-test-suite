@@ -52,3 +52,12 @@ class BasePage(TestHelper):
         :return: None
         """
         self.navigate(self.url)
+
+    def press_menu_link(self):
+        self.do_click_link((By.XPATH, "//button[contains(text(), 'Menu')]"))
+
+    def press_sign_in_link(self):
+        self.do_click_link((By.LINK_TEXT, 'Sign in'))
+
+    def press_sign_out_link(self):
+        self.do_click_link((By.XPATH, "//button[text()='Sign out']"))
