@@ -45,7 +45,7 @@ def before_scenario(context, scenario):  # noqa: C901
                 context.browser = webdriver.Safari(options=options)
 
 
-def after_scenario(context, feature):
+def after_scenario(context, scenario):
     if USE_BROWSERSTACK:
         if context.failed is True:
             context.browser.execute_script(

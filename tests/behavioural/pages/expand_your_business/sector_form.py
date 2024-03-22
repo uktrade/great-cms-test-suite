@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 from tests.behavioural.pages.base import BasePage
 
@@ -23,4 +24,10 @@ class SectorForm(BasePage):
         return self.is_visible(locator) and child_count > 0
 
     def choose_first_sector_displayed(self):
-        self.do_click((By.ID, 'js-sector-select__option--0'))
+        element = self.find_element((By.ID, 'js-sector-select__option--0'))
+        text = element.text
+        element.click()
+        return text
+
+    def clear_sector_entry(self):
+        self.do_send_keys((By.ID, 'js-sector-select'), Keys.BACKSPACE * 255)

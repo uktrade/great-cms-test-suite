@@ -1,6 +1,7 @@
 from random import choice
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 from tests.behavioural.pages.base import BasePage
 
@@ -34,4 +35,10 @@ class LocationForm(BasePage):
         return self.is_visible(locator) and child_count > 0
 
     def choose_first_location_displayed(self):
-        self.do_click((By.ID, 'js-location-select__option--0'))
+        element = self.find_element((By.ID, 'js-location-select__option--0'))
+        text = element.text
+        element.click()
+        return text
+
+    def clear_location_text(self):
+        self.do_send_keys((By.ID, 'js-location-select'), Keys.BACKSPACE * 255)

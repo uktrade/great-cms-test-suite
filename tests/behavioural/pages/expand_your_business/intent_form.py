@@ -20,9 +20,14 @@ class IntentForm(BasePage):
         return len(self.find_elements((By.XPATH, "//form//fieldset//input[@name='intent']"))) > 0
 
     def choose_random_expansion_option(self):
-        options = self.find_elements((By.XPATH, "//form//fieldset//input[@name='intent']"))
+        options = self.find_elements((By.XPATH, "//form//fieldset//input[@name='intent']//following-sibling::label"))
         element = choice(options)
         element.click()
 
         if element.text == 'Other':
             self.do_send_keys((By.ID, 'id_intent_other'), 'another intent')
+
+        return element.text
+
+    def clear_expansion_selection(self):
+        self.clear_checkbox_selection((By.CSS_SELECTOR, "input:checked[type='checkbox']"))
