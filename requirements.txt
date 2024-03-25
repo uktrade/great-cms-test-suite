@@ -14,7 +14,7 @@ behave==1.2.6
     # via -r requirements.in
 browserstack-local==1.2.7
     # via browserstack-sdk
-browserstack-sdk==1.19.18
+browserstack-sdk==1.19.20
     # via -r requirements.in
 certifi==2024.2.2
     # via
@@ -31,9 +31,9 @@ exceptiongroup==1.2.0
     #   trio-websocket
 execnet==2.0.2
     # via pytest-xdist
-faker==24.1.1
+faker==24.3.0
     # via -r requirements.in
-filelock==3.13.1
+filelock==3.13.2
     # via tldextract
 gitdb==4.0.11
     # via gitpython
@@ -73,13 +73,13 @@ psutil==5.9.8
     # via
     #   browserstack-local
     #   browserstack-sdk
-pyobjc-core==10.1
+pyobjc-core==10.2
     # via
     #   pyobjc-framework-cocoa
     #   pyobjc-framework-systemconfiguration
-pyobjc-framework-cocoa==10.1
+pyobjc-framework-cocoa==10.2
     # via pyobjc-framework-systemconfiguration
-pyobjc-framework-systemconfiguration==10.1
+pyobjc-framework-systemconfiguration==10.2
     # via pypac
 pypac==0.16.4
     # via browserstack-sdk
@@ -146,11 +146,11 @@ sortedcontainers==2.4.0
     # via trio
 tenacity==8.2.3
     # via pytest-selenium
-tldextract==5.1.1
+tldextract==5.1.2
     # via pypac
 tomli==2.0.1
     # via pytest
-trio==0.24.0
+trio==0.25.0
     # via
     #   selenium
     #   trio-websocket
