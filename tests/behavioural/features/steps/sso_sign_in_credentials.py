@@ -7,6 +7,7 @@ from tests.behavioural.pages.sso.sign_in_page import SignInPage
 @when('I click the homepage sign in link')
 def step_navigate_to_sign_in(context):
     homepage = HomePage(context)
+    homepage.press_menu_link()
     homepage.press_sign_in_link()
 
 

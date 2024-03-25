@@ -19,6 +19,7 @@ def step_start_on_great(context):
 @when('I click the navigation bar sign in link')
 def step_navigate_to_sign_in(context):
     homepage = HomePage(context)
+    homepage.press_menu_link()
     homepage.press_sign_in_link()
 
 
