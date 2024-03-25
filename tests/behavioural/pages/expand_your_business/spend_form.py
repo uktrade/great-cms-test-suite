@@ -33,4 +33,6 @@ class SpendForm(BasePage):
     def choose_random_spend_option(self):
         # click on the label because parent div is full width and so clicking in the middle doesn't set value
         options = self.find_elements((By.XPATH, "//input[@name='spend']/following-sibling::label"))
-        choice(options).click()
+        chosen_option = choice(options)
+        chosen_option.click()
+        return chosen_option.text

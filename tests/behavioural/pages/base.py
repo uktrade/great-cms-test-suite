@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from behave.runner import Context as BehaveContext
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
@@ -61,3 +63,9 @@ class BasePage(TestHelper):
 
     def press_sign_out_link(self):
         self.do_click_link((By.ID, 'sign-out'))
+
+    def clear_checkbox_selection(self, locator: Tuple[str, str]):
+        checked_options = self.find_elements(locator)
+
+        for option in checked_options:
+            option.click()

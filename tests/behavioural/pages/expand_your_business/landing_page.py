@@ -14,3 +14,7 @@ class ExpandYourBusiness(BasePage):
 
     def start_triage(self):
         self.do_click_link((By.LINK_TEXT, 'Start now'))
+
+    def signed_in(self):
+        # infer user is signed in if the 'Sign out' button is visible
+        return self.is_visible((By.LINK_TEXT, 'Sign out'))

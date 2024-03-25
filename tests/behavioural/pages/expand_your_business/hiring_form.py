@@ -21,4 +21,6 @@ class HiringForm(BasePage):
 
     def choose_random_hiring_option(self):
         options = self.find_elements((By.XPATH, "//div[@id='hiring']//div[@class='govuk-radios__item']//label"))
-        choice(options).click()
+        chosen_option = choice(options)
+        chosen_option.click()
+        return chosen_option.text
