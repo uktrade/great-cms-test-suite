@@ -19,7 +19,7 @@ Feature: Single Sign On
     Then I am taken to the user dashboard page
 
   @Chrome
-  Scenario: User can sign out to the Great services
+  Scenario: User can sign out from the Great services
     Given I am on the main homepage
     And I complete the authentication steps
     When I am taken to the dashboard page
