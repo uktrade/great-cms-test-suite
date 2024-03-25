@@ -14,3 +14,6 @@ class ExportAcademy(BasePage):
 
     def signup_cta_visible(self):
         return self.is_visible((By.LINK_TEXT, 'Sign up to get started'))
+
+    def visit_events_page(self):
+        return self.do_click_link((By.LINK_TEXT, 'View all events'))

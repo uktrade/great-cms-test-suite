@@ -1,3 +1,4 @@
+@great_random_data
 Feature: UK Export Academy
   As a user
   I want to be able to engage with the UK Export Academy service offering
@@ -12,3 +13,9 @@ Feature: UK Export Academy
     Given I am on Great home page
     When I click “Join the UK export academy” card
     Then I should see UKEA landing page
+
+  @Chrome
+  Scenario: View events
+  Given I am in export academy events page and logged in
+  When I click on an event
+  Then I should see details of that event
