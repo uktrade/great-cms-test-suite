@@ -13,6 +13,7 @@ from tests.behavioural.features.steps.eyb.eyb_triage import *
 from tests.behavioural.features.steps.sso.sso_sign_in import *
 from tests.behavioural.features.steps.sso.sso_sign_in_credentials import *
 from tests.behavioural.features.steps.sso.sso_sign_up import *
+from tests.behavioural.features.steps.ukea.ukea_logged_in import *
 
 # UKEA - UK Export Academy
 from tests.behavioural.features.steps.ukea.ukea_logged_out import *
