@@ -74,8 +74,7 @@ class TestHelper:
         return select.all_selected_options[0].text
 
     def get_tag_driver(self, locator: Tuple[str, str]):
-        self._wait.until(ec.presence_of_element_located(locator))
-        return self.driver
+        return self._wait.until(ec.presence_of_element_located(locator))
 
     def wait_for_url(self, url):
         return self._wait.until(ec.url_to_be(url))

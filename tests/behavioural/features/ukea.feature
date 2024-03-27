@@ -16,6 +16,12 @@ Feature: UK Export Academy
 
   @Chrome
   Scenario: View events
-  Given I am in export academy events page and logged in
-  When I click on an event
-  Then I should see details of that event
+    Given I am in export academy events page and logged in
+    When I click on an event
+    Then I should see details of that event
+
+  @Chrome
+  Scenario: Events Filters
+    Given I am in UK Export Academy landing page
+    When I click sector & market card
+    Then I should be in "UK Export Academy Events" page with both sector and master filters on
