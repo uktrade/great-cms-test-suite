@@ -23,9 +23,10 @@ def eyb_random_data(context):
 
 @fixture
 def great_random_data(context):
+    sso_uuid = uuid4()
     data = {
-        'email_address': f'automated-ui-test+{uuid4()}@mail.ci.uktrade.digital',
-        'password': f'A1!{uuid4()}',
+        'email_address': f'automated-ui-test+{sso_uuid}@mail.ci.uktrade.digital',
+        'password': f'A1!{sso_uuid}',
     }
 
     setattr(context, 'user_data', data)

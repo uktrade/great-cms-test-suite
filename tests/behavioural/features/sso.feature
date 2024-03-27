@@ -3,7 +3,7 @@ Feature: Single Sign On
   As a user
   I want to be able to engage with Great service offering
 
-  @Chrome
+  @Chrome @wip
   Scenario: User can sign up to the Great services
     Given I am on the great.gov.uk homepage
     And I navigate to the sign up page
