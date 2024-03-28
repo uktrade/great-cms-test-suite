@@ -56,13 +56,13 @@ class BasePage(TestHelper):
         self.navigate(self.url)
 
     def press_menu_link(self):
-        self.do_click_link((By.XPATH, "//button[contains(text(), 'Menu')]"))
+        self.do_click((By.XPATH, "//button[contains(text(), 'Menu')]"))
 
     def press_sign_in_link(self):
-        self.do_click_link((By.LINK_TEXT, 'Sign in'))
+        self.do_click_link((By.ID, 'sign-in'))
 
     def press_sign_out_link(self):
-        self.do_click_link((By.XPATH, "//button[text()='Sign out']"))
+        self.do_click_link((By.ID, 'sign-out'))
 
     def clear_checkbox_selection(self, locator: Tuple[str, str]):
         checked_options = self.find_elements(locator)
