@@ -1,6 +1,7 @@
 from behave import given, then, when
 
 from tests.behavioural.pages.export_academy.landing_page import ExportAcademy
+from tests.behavioural.pages.export_academy.sector_and_market_page import ExportAcademySectorAndMarketPage
 from tests.behavioural.pages.homepage import HomePage
 
 
@@ -42,3 +43,31 @@ def step_ukea_landing_page_is_loaded_on_browser(context):
     ukea_landing_page.get_url()
     assert context.browser.current_url == ukea_landing_page.url
     assert ukea_landing_page.signup_cta_visible() is True
+
+
+@given(u'I am in UK Export Academy landing page')
+def step_visit_ukea_landing_page(context):  # noqa
+    context.execute_steps(
+        """
+        Given I am on the UKEA landing page
+        """
+    )
+
+
+@when(u'I click sector & market card')
+def step_click_sector_and_market_card(context):
+    ukea_landing_page = ExportAcademy(context)
+    ukea_landing_page.visit_sector_market_page()
+
+    ukea_sector_and_market_page = ExportAcademySectorAndMarketPage(context)
+    ukea_sector_and_market_page.get_url()
+    assert context.browser.current_url == ukea_sector_and_market_page.url
+
+
+@then(u'I should be in "UK Export Academy Events" page with both sector and master filters on')
+def step_sector_and_market_checkboxes_selected(context):
+    ukea_sector_and_market_page = ExportAcademySectorAndMarketPage(context)
+    ukea_sector_and_market_page.get_url()
+
+    assert ukea_sector_and_market_page.is_sector_check_box_selected() is True
+    assert ukea_sector_and_market_page.is_market_check_box_selected() is True

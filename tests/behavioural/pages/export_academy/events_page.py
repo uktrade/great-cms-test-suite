@@ -21,4 +21,5 @@ class ExportAcademyEventsPage(BasePage):
         return self.is_visible((By.XPATH, "//h2[text()='Description']"))
 
     def event_title(self):
-        return self.get_tag_driver((By.TAG_NAME, 'title')).title
+        self.get_tag_driver((By.TAG_NAME, 'title'))
+        return self.driver.title
